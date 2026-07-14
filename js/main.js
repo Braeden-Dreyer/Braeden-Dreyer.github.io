@@ -135,7 +135,7 @@
     { html: '<span class="t-dim">$</span> <span class="t-cmd">braeden --init</span>', pause: 500 },
     { html: '<span class="t-key">  program</span>   : Mechatronic Systems Eng.', pause: 120 },
     { html: '<span class="t-key">  school</span>    : Western University', pause: 120 },
-    { html: '<span class="t-key">  gpa</span>       : <span class="t-val">3.81 / 4.0</span>', pause: 120 },
+    { html: '<span class="t-key">  gpa</span>       : <span class="t-val">3.82 / 4.0</span>', pause: 120 },
     { html: '<span class="t-key">  honors</span>    : <span class="t-val">Dean\'s List ×2</span>', pause: 260 },
     { html: '<span class="t-dim">$</span> <span class="t-cmd">braeden --modules</span>', pause: 500 },
     { html: '  <span class="t-dim">[ok]</span> solidworks.cswa', pause: 110 },
