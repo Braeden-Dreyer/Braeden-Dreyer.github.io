@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Braeden Dreyer — Mechatronics Engineering</title>
+  <meta name="description" content="Portfolio of Braeden Dreyer, Mechatronic Systems Engineering student at Western University. Robotics, CAD design, embedded systems, and industrial automation." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 28 9v14L16 30 4 23V9z' fill='%230d1524' stroke='%232563eb' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%233b82f6'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="Home">
+      <svg class="nav__hex" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 2 28 9v14L16 30 4 23V9z" fill="none" stroke="currentColor" stroke-width="2"/>
+        <circle cx="16" cy="16" r="4" fill="currentColor"/>
+      </svg>
+      <span class="nav__name">BRAEDEN<b>.DREYER</b></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#about"><span>01.</span>About</a>
+      <a href="#projects"><span>02.</span>Projects</a>
+      <a href="#experience"><span>03.</span>Experience</a>
+      <a href="#education"><span>04.</span>Education</a>
+      <a href="#skills"><span>05.</span>Skills</a>
+      <a href="#contact" class="nav__cta">Contact</a>
+    </nav>
+    <button class="nav__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <canvas id="circuit-canvas" aria-hidden="true"></canvas>
+      <div class="hero__grid" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__text">
+          <div class="status-chip reveal">
+            <span class="status-chip__dot"></span>
+            SYSTEMS ONLINE&ensp;//&ensp;OPEN TO OPPORTUNITIES
+          </div>
+          <h1 class="hero__title reveal">Braeden<br />Dreyer<span class="cursor-block">_</span></h1>
+          <p class="hero__role reveal">
+            <span class="hero__prompt">&gt;</span>
+            <span id="typed"></span><span class="typed-caret">|</span>
+          </p>
+          <p class="hero__blurb reveal">
+            Mechatronic Systems Engineering student at Western University who designs,
+            builds, and programs machines — from budget-constrained sorting robots to
+            factory-floor automation systems.
+          </p>
+          <div class="hero__actions reveal">
+            <a class="btn btn--solid" href="#projects">View Projects
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 3.5 12.5 8 8 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#contact">Get In Touch</a>
+          </div>
+          <ul class="hero__stats reveal">
+            <li><b>3.81</b><span>GPA / 4.0</span></li>
+            <li><b>2×</b><span>Dean's List</span></li>
+            <li><b>CSWA</b><span>SolidWorks Certified</span></li>
+          </ul>
+        </div>
+
+        <!-- Animated robotic arm -->
+        <div class="hero__visual reveal" id="armWrap" aria-hidden="true">
+          <div class="hud-readout hud-readout--tl">
+            <span>ARM.STATUS</span>OPERATIONAL
+          </div>
+          <div class="hud-readout hud-readout--br">
+            <span>TARGET</span>ERASER.01 &middot; LOCKED
+          </div>
+
+          <svg id="robotArm" viewBox="0 0 420 420">
+            <defs>
+              <linearGradient id="armMetal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#1c2b45"/>
+                <stop offset="1" stop-color="#0e1830"/>
+              </linearGradient>
+              <linearGradient id="armMetal2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#24365a"/>
+                <stop offset="1" stop-color="#121f3a"/>
+              </linearGradient>
+            </defs>
+
+            <!-- targeting rings around the eraser -->
+            <g class="target">
+              <circle cx="112" cy="352" r="34" fill="none" stroke="#2563eb" stroke-width="1" stroke-dasharray="6 8" opacity=".7">
+                <animateTransform attributeName="transform" type="rotate" from="0 112 352" to="360 112 352" dur="14s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="112" cy="352" r="22" fill="none" stroke="#3b82f6" stroke-width="1" opacity=".5">
+                <animate attributeName="r" values="20;26;20" dur="3s" repeatCount="indefinite"/>
+                <animate attributeName="opacity" values=".6;.15;.6" dur="3s" repeatCount="indefinite"/>
+              </circle>
+              <!-- the eraser -->
+              <g transform="translate(112 352)">
+                <rect x="-16" y="-8" width="32" height="14" rx="3" fill="#2f4877" stroke="#4f7fd9" stroke-width="1.2"/>
+                <rect x="-16" y="-8" width="32" height="6" rx="3" fill="#3d5c96"/>
+              </g>
+            </g>
+
+            <!-- ground line -->
+            <line x1="30" y1="366" x2="390" y2="366" stroke="#1b2a44" stroke-width="2"/>
+            <line x1="52" y1="374" x2="368" y2="374" stroke="#14213a" stroke-width="1.5" stroke-dasharray="10 8"/>
+
+            <!-- ARM -->
+            <g transform="translate(290 360)">
+              <!-- base -->
+              <rect x="-54" y="-8" width="108" height="16" rx="4" fill="url(#armMetal)" stroke="#2c4269" stroke-width="1.5"/>
+              <rect x="-38" y="-30" width="76" height="24" rx="6" fill="url(#armMetal2)" stroke="#2c4269" stroke-width="1.5"/>
+              <circle cx="-26" cy="0" r="3" fill="#3b82f6" opacity=".9"/>
+              <circle cx="26" cy="0" r="3" fill="#3b82f6" opacity=".9"/>
+
+              <!-- shoulder joint -->
+              <g transform="translate(0 -30)">
+                <animateTransform attributeName="transform" type="rotate" values="-36 0 0; -44 0 0; -36 0 0" dur="8s" repeatCount="indefinite" additive="sum" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"/>
+                <!-- upper arm -->
+                <rect x="-11" y="-128" width="22" height="132" rx="9" fill="url(#armMetal2)" stroke="#2f4a77" stroke-width="1.5"/>
+                <line x1="0" y1="-16" x2="0" y2="-110" stroke="#0a1226" stroke-width="3" stroke-dasharray="4 10" opacity=".8"/>
+                <circle r="16" fill="#0d1524" stroke="#3b82f6" stroke-width="2"/>
+                <circle r="6" fill="#1d4ed8">
+                  <animate attributeName="opacity" values="1;.4;1" dur="2.4s" repeatCount="indefinite"/>
+                </circle>
+
+                <!-- elbow -->
+                <g transform="translate(0 -128)">
+                  <animateTransform attributeName="transform" type="rotate" values="-66 0 0; -76 0 0; -66 0 0" dur="8s" repeatCount="indefinite" additive="sum" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"/>
+                  <rect x="-9" y="-104" width="18" height="108" rx="8" fill="url(#armMetal)" stroke="#2f4a77" stroke-width="1.5"/>
+                  <circle r="12" fill="#0d1524" stroke="#3b82f6" stroke-width="2"/>
+                  <circle r="4.5" fill="#1d4ed8">
+                    <animate attributeName="opacity" values=".4;1;.4" dur="2.4s" repeatCount="indefinite"/>
+                  </circle>
+
+                  <!-- wrist + gripper -->
+                  <g transform="translate(0 -104)">
+                    <animateTransform attributeName="transform" type="rotate" values="-73 0 0; -63 0 0; -73 0 0" dur="8s" repeatCount="indefinite" additive="sum" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"/>
+                    <circle r="9" fill="#0d1524" stroke="#4f7fd9" stroke-width="2"/>
+                    <rect x="-17" y="-24" width="34" height="12" rx="4" fill="url(#armMetal2)" stroke="#2f4a77" stroke-width="1.5"/>
+                    <!-- fingers -->
+                    <g transform="translate(-13 -24)">
+                      <animateTransform attributeName="transform" type="rotate" values="0 0 0; 14 0 0; 0 0 0" dur="4s" repeatCount="indefinite" additive="sum"/>
+                      <rect x="-3.5" y="-24" width="7" height="26" rx="3" fill="#16264a" stroke="#3b82f6" stroke-width="1.4"/>
+                    </g>
+                    <g transform="translate(13 -24)">
+                      <animateTransform attributeName="transform" type="rotate" values="0 0 0; -14 0 0; 0 0 0" dur="4s" repeatCount="indefinite" additive="sum"/>
+                      <rect x="-3.5" y="-24" width="7" height="26" rx="3" fill="#16264a" stroke="#3b82f6" stroke-width="1.4"/>
+                    </g>
+                    <!-- sensor beam -->
+                    <line x1="0" y1="-24" x2="0" y2="-70" stroke="#3b82f6" stroke-width="1" stroke-dasharray="2 5" opacity=".55">
+                      <animate attributeName="opacity" values=".55;.1;.55" dur="1.6s" repeatCount="indefinite"/>
+                    </line>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#about" aria-label="Scroll to about">
+        <span class="hero__scroll-label">SCROLL</span>
+        <span class="hero__scroll-line"></span>
+      </a>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="section" id="about">
+      <div class="section__inner">
+        <h2 class="section__title reveal"><span class="section__num">01</span>About<span class="section__slash">//</span></h2>
+
+        <div class="about">
+          <div class="about__text reveal">
+            <p>
+              I'm a <strong>Mechatronic Systems Engineering</strong> student at
+              <strong>Western University</strong> (Class of 2028), a two-time Dean's List
+              recipient, and a builder at heart. I like problems that live at the
+              intersection of mechanical design, electronics, and code — where a part has
+              to be modeled, printed, wired, and programmed before it does anything useful.
+            </p>
+            <p>
+              That's taken me from designing a printer enclosure for a university research
+              group, to building a budget-constrained eraser-sorting robot around an ESP32,
+              to the factory floor at Umicore — where I currently work as a maintenance
+              intern and shipped a new automatic inventory tracking system from proposal
+              to tested implementation.
+            </p>
+            <ul class="about__stats">
+              <li><b data-count="3.81" data-decimals="2">0</b><span>GPA / 4.0</span></li>
+              <li><b data-count="3">0</b><span>CAD platforms</span></li>
+              <li><b data-count="3">0</b><span>Programming languages</span></li>
+              <li><b data-static="2028">2028</b><span>Graduating class</span></li>
+            </ul>
+          </div>
+
+          <div class="terminal reveal" id="terminal">
+            <div class="terminal__bar">
+              <span class="terminal__dot"></span><span class="terminal__dot"></span><span class="terminal__dot"></span>
+              <span class="terminal__title">braeden@western: ~/profile</span>
+            </div>
+            <pre class="terminal__body" id="terminalBody" aria-label="Profile summary terminal"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="circuit-divider" aria-hidden="true"><span></span></div>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section" id="projects">
+      <div class="section__inner">
+        <h2 class="section__title reveal"><span class="section__num">02</span>Projects<span class="section__slash">//</span></h2>
+
+        <div class="projects" id="projectsGrid">
+          <!-- Eraser sorting robot -->
+          <article class="card card--project card--featured reveal" aria-expanded="false">
+            <button class="card__close" aria-label="Collapse project details">&#10005;</button>
+            <div class="card__badge">FEATURED</div>
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 42h20M24 42v-6"/><rect x="12" y="20" width="24" height="16" rx="3"/><circle cx="19" cy="28" r="2.6" fill="currentColor" stroke="none"/><circle cx="29" cy="28" r="2.6" fill="currentColor" stroke="none"/><path d="M24 20v-6M24 14h9M33 10v8"/><circle cx="24" cy="11" r="3"/></g></svg>
+            </div>
+            <h3 class="card__title">Eraser Sorting Robot</h3>
+            <p class="card__desc">
+              Designed and built a robot that picks up, sorts, and deposits selected erasers —
+              engineered under a strict budget with weight reduction as a core design driver.
+              Modeled the full assembly in SolidWorks, manufactured custom 3D-printed
+              components, and programmed an ESP32 to drive the motors, sensors, and
+              peripheral equipment behind the pick-sort-deposit cycle.
+            </p>
+            <div class="card__details">
+              <ul class="card__points">
+                <li>Full mechanical design in SolidWorks with weight-optimized, 3D-printed parts</li>
+                <li>ESP32 firmware integrating motors, sensors, and peripheral hardware</li>
+                <li>Autonomous pick &rarr; identify &rarr; sort &rarr; deposit cycle on a limited budget</li>
+              </ul>
+            </div>
+            <div class="card__tags">
+              <span>ESP32</span><span>SolidWorks</span><span>3D Printing</span><span>C</span><span>Motor Control</span>
+            </div>
+            <div class="card__expand-hint">+ EXPAND // DETAILS</div>
+          </article>
+
+          <!-- GigabotX -->
+          <article class="card card--project reveal" aria-expanded="false">
+            <button class="card__close" aria-label="Collapse project details">&#10005;</button>
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="32" height="32" rx="2"/><path d="M8 16h32M16 16v24M24 22v6M21 28h6l-3 4z" /><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="17" cy="12" r="1.4" fill="currentColor" stroke="none"/></g></svg>
+            </div>
+            <h3 class="card__title">GigabotX 3D Printer Enclosure</h3>
+            <p class="card__desc">
+              Partnered with Western University's FAST Research Group to design and prototype
+              an enclosure for their custom GigabotX large-format 3D printer — improving the
+              accuracy, safety, and cost-effectiveness of their research printing.
+            </p>
+            <div class="card__details">
+              <ul class="card__points">
+                <li>Ran client meetings to capture requirements and present design iterations</li>
+                <li>Produced CAD drawings &amp; models of every part and the existing frame</li>
+                <li>Delivered progress reports and a small-scale model with a filtration concept</li>
+              </ul>
+            </div>
+            <div class="card__tags">
+              <span>SolidWorks</span><span>CAD Drawings</span><span>Prototyping</span><span>Client Work</span>
+            </div>
+            <div class="card__meta">NOV 2024 — MAY 2025 · FAST RESEARCH GROUP</div>
+            <div class="card__expand-hint">+ EXPAND // DETAILS</div>
+          </article>
+
+          <!-- Inventory tracking -->
+          <article class="card card--project reveal" aria-expanded="false">
+            <button class="card__close" aria-label="Collapse project details">&#10005;</button>
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6 40 14v20L24 42 8 34V14z"/><path d="M8 14l16 8 16-8M24 22v20"/><path d="M32 10 16 18" opacity=".6"/></g></svg>
+            </div>
+            <h3 class="card__title">Automatic Inventory Tracking</h3>
+            <p class="card__desc">
+              Identified a gap in how maintenance inventory was tracked at Umicore and owned
+              the fix end-to-end: proposed a new source of automatic inventory tracking,
+              developed and implemented it, then tested it in a live industrial environment.
+            </p>
+            <div class="card__details">
+              <ul class="card__points">
+                <li>Self-initiated proposal, pitched and approved in an operating plant</li>
+                <li>Developed and implemented the tracking system end-to-end</li>
+                <li>Validated through testing against real maintenance workflows</li>
+              </ul>
+            </div>
+            <div class="card__tags">
+              <span>Automation</span><span>Process Improvement</span><span>Implementation</span><span>Testing</span>
+            </div>
+            <div class="card__meta">2026 · UMICORE — INDUSTRY PROJECT</div>
+            <div class="card__expand-hint">+ EXPAND // DETAILS</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="circuit-divider" aria-hidden="true"><span></span></div>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section" id="experience">
+      <div class="section__inner">
+        <h2 class="section__title reveal"><span class="section__num">03</span>Experience<span class="section__slash">//</span></h2>
+
+        <div class="timeline">
+          <article class="timeline__item reveal">
+            <div class="timeline__node timeline__node--active"></div>
+            <div class="timeline__card">
+              <div class="timeline__date">MAY 2026 — PRESENT</div>
+              <h3 class="timeline__role">Maintenance Intern</h3>
+              <div class="timeline__org">Umicore</div>
+              <ul>
+                <li>Perform factory maintenance activities across production equipment, keeping an active industrial line running.</li>
+                <li>Proposed, developed, implemented, and tested a new source of automatic inventory tracking for maintenance operations.</li>
+              </ul>
+              <div class="card__tags">
+                <span>Industrial Maintenance</span><span>Automation</span><span>Continuous Improvement</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline__item reveal">
+            <div class="timeline__node"></div>
+            <div class="timeline__card">
+              <div class="timeline__date">MAY 2025 — AUG 2025</div>
+              <h3 class="timeline__role">Back of Line Operator &amp; Data Transfer Specialist</h3>
+              <div class="timeline__org">Umicore Autocat Canada · Burlington, ON</div>
+              <ul>
+                <li>Maintained product quality through thorough inspection and set up equipment between runs to meet customer specifications.</li>
+                <li>Coordinated with front and middle line operators to keep the line running at full efficiency, running tests and flagging problems early.</li>
+                <li>Recognized by the team leader as capable of operating an extremely specialized line.</li>
+                <li>Hand-selected to migrate 3,000+ parts and 200+ job plans to new software — accurately and ahead of deadline.</li>
+              </ul>
+              <div class="card__tags">
+                <span>Quality Inspection</span><span>Equipment Setup</span><span>Data Migration</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="circuit-divider" aria-hidden="true"><span></span></div>
+
+    <!-- ===== EDUCATION ===== -->
+    <section class="section" id="education">
+      <div class="section__inner">
+        <h2 class="section__title reveal"><span class="section__num">04</span>Education<span class="section__slash">//</span></h2>
+
+        <div class="edu reveal">
+          <div class="edu__main">
+            <div class="edu__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 10 4 20l20 10 20-10z"/><path d="M12 25v9c0 3.3 5.4 6 12 6s12-2.7 12-6v-9"/><path d="M44 21v10"/></g></svg>
+            </div>
+            <div>
+              <div class="edu__dates">SEPT 2024 — MAY 2028 (EXPECTED)</div>
+              <h3 class="edu__degree">BESc, Mechatronic Systems Engineering</h3>
+              <div class="edu__school">Western University · London, ON</div>
+              <p class="edu__desc">
+                Coursework and projects spanning mechanical design, circuits, embedded
+                programming, and control systems — applied through research-group and
+                hands-on build projects.
+              </p>
+            </div>
+          </div>
+          <ul class="edu__highlights">
+            <li><b>3.81</b>GPA / 4.0</li>
+            <li><b>Dean's List</b>Fall 2024 &amp; Winter 2025</li>
+            <li><b>CSWA</b>Certified SolidWorks Associate</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="circuit-divider" aria-hidden="true"><span></span></div>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="section" id="skills">
+      <div class="section__inner">
+        <h2 class="section__title reveal"><span class="section__num">05</span>Skills<span class="section__slash">//</span></h2>
+
+        <div class="skills">
+          <div class="skill-panel reveal">
+            <div class="skill-panel__head">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="4"/></g></svg>
+              <h3>Design &amp; CAD</h3>
+            </div>
+            <div class="skill-panel__tags">
+              <span>SolidWorks <em>CSWA</em></span>
+              <span>Autodesk Inventor</span>
+              <span>Altium Designer</span>
+              <span>3D Printing</span>
+              <span>Engineering Drawings</span>
+              <span>Rapid Prototyping</span>
+            </div>
+          </div>
+
+          <div class="skill-panel reveal">
+            <div class="skill-panel__head">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></g></svg>
+              <h3>Electronics &amp; Embedded</h3>
+            </div>
+            <div class="skill-panel__tags">
+              <span>ESP32</span>
+              <span>Soldering</span>
+              <span>Sensor Integration</span>
+              <span>Motor Control</span>
+              <span>PCB Design</span>
+              <span>Peripheral Interfacing</span>
+            </div>
+          </div>
+
+          <div class="skill-panel reveal">
+            <div class="skill-panel__head">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></g></svg>
+              <h3>Programming</h3>
+            </div>
+            <div class="skill-panel__tags">
+              <span>C</span>
+              <span>Java</span>
+              <span>MATLAB</span>
+              <span>Embedded Firmware</span>
+            </div>
+          </div>
+
+          <div class="skill-panel reveal">
+            <div class="skill-panel__head">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.4 2.8-5.4 5.5-5.4S13.9 16.6 14.5 20"/><path d="M16 4.8a3.2 3.2 0 0 1 0 6.4M17.6 14.7c1.7.8 2.7 2.7 3 5.3"/></g></svg>
+              <h3>Professional</h3>
+            </div>
+            <div class="skill-panel__tags">
+              <span>Client Communication</span>
+              <span>Technical Documentation</span>
+              <span>Conflict Resolution</span>
+              <span>Attention to Detail</span>
+              <span>Rapid Learning</span>
+              <span>Microsoft 365</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="circuit-divider" aria-hidden="true"><span></span></div>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section section--contact" id="contact">
+      <div class="section__inner">
+        <h2 class="section__title reveal"><span class="section__num">06</span>Contact<span class="section__slash">//</span></h2>
+
+        <div class="contact reveal">
+          <p class="contact__lead">
+            <span class="contact__mono">// transmission channel open</span><br />
+            Looking for a mechatronics student who can take a system from CAD model to
+            working machine? Let's talk.
+          </p>
+          <div class="contact__grid">
+            <a class="contact__card" href="mailto:Braeden.dreyer@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></g></svg>
+              <span class="contact__label">EMAIL</span>
+              <span class="contact__value">Braeden.dreyer@gmail.com</span>
+            </a>
+            <a class="contact__card" href="tel:+12896844773">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></g></svg>
+              <span class="contact__label">PHONE</span>
+              <span class="contact__value">289-684-4773</span>
+            </a>
+            <div class="contact__card">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></g></svg>
+              <span class="contact__label">LOCATION</span>
+              <span class="contact__value">Grimsby, Ontario</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__mono">BRAEDEN.DREYER // MECHATRONIC SYSTEMS ENGINEERING</span>
+      <span>&copy; <span id="year"></span> Braeden Dreyer · Western University</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
